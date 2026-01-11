@@ -2,14 +2,21 @@
 import Link from "next/link";
 import Container from "../container";
 import Image from "next/image";
-import { motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
+import {
+  easeIn,
+  easeInOut,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "motion/react";
 import { useRef, useState } from "react";
 export default function Navbar() {
-  const ref = useRef(null)
+  const ref = useRef(null);
   const nav = [
     {
       name: "About",
-      href: "#about",
+      href: "/",
       id: 1,
     },
     {
@@ -24,30 +31,39 @@ export default function Navbar() {
     },
     {
       name: "Blogs",
-      href: "#blog",
+      href: "/blogs",
       id: 4,
     },
   ];
   const [hover, setHover] = useState<number | null>(null);
-  const [size,setSize] = useState(false)
-  const {scrollYProgress} = useScroll()
-  useMotionValueEvent(scrollYProgress,"change",(latest)=>{
-   console.log(latest)
-   if(latest>0){
-setSize(true)
-   }
-   else setSize(false)
-  })
+  const [size, setSize] = useState<boolean>(false);
+  const { scrollYProgress } = useScroll();
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    console.log(latest);
+    if (latest > 0) {
+      setSize(true);
+    } else setSize(false);
+  });
   return (
-    <Container>
-      <div ref={ref}> 
-      <motion.nav
-      transition={{
-        duration:1,
-        ease : "easeInOut"
-      }}
-       className={`mx-auto flex  items-center justify-between  p-1 px-2 ${size ? "px-5 rounded-4xl bg-neutral-200 absolute inset-0  h-20 w-2/4 " : "w-full"} `}>
-     
+    
+      <motion.div
+        initial={{
+          filter:"blur(1px)",
+          width: "56rem"
+        }}
+        transition={{
+          ease: easeInOut,
+          duration: 0.25,
+        }}
+        animate={{
+          opacity: 1,
+          boxShadow: size ? "var(--shadow-nav)" : "none",
+          width: size ? "50rem" : "56rem",
+          filter : "blur(0px)"
+        }}
+        className={`fixed top-3 left-1/2 p-px flex -translate-x-1/2 items-center justify-between rounded-xl px-2 bg-neutral-100`}
+        ref={ref}
+      >
         <Image
           className="h-12 w-12 rounded-full object-cover"
           src={"/profile.png"}
@@ -55,32 +71,32 @@ setSize(true)
           height={120}
           alt="profile"
         ></Image>
-        {nav.map((itm) => (
-          <div
-            className="relative flex rounded-2xl p-2"
-            key={itm.id}
-            onMouseEnter={() => setHover(itm.id)}
-            onMouseLeave={()=> null}
-          >
-            {hover === itm.id && (
-              <motion.span
-                transition={{
-                  duration: 0.2,
-                  ease: "easeInOut",
-                }}
-                layoutId="follow"
-                className="absolute inset-0 rounded-2xl bg-neutral-400"
-              />
-            )}
+        <motion.nav className="flex items-center gap-1 z-1">
+          {nav.map((itm) => (
+            <div
+              className="relative flex rounded-2xl p-2"
+              key={itm.id}
+              onMouseEnter={() => setHover(itm.id)}
+              onMouseLeave={() => null}
+            >
+              {hover === itm.id && (
+                <motion.span
+                  transition={{
+                    duration: 0.2,
+                    ease: "easeInOut",
+                  }}
+                  layoutId="follow"
+                  className="absolute inset-0 rounded-2xl bg-neutral-200"
+                />
+              )}
 
-            <Link 
-            className="z-1 " href={itm.href}>
-              {itm.name}
-            </Link>
-          </div>
-        ))}
-      </motion.nav>
-      </div>
-    </Container>
+              <Link className="text-primary z-1 text-sm" href={itm.href}>
+                {itm.name}
+              </Link>
+            </div>
+          ))}
+        </motion.nav>
+      </motion.div>
+    
   );
 }

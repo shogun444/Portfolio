@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@plugin "@tailwindcss/typography";
 :root {
   --foreground: #ffffff;
   --background: #e0d1d1;
@@ -7,7 +7,8 @@
 
 @theme inline {
   --color-primary: var(--color-neutral-900) ;
-  --color-secondry: var(--color-neutral-500)
+  --color-secondary: var(--color-neutral-500);
+   --shadow-nav : 0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)
 }
 
 .dark {

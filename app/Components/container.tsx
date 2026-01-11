@@ -8,7 +8,14 @@ export default function Container({
   children: React.ReactNode;
   className?: string;
 }) {
-  return <div className={cn("min-w-4xl  max-w-4xl mx-auto  bg-neutral-100 shadow-md p-4", className)}>
-
-    {children}</div>;
+  return (
+    <div
+      className={cn(
+        "mx-auto w-full max-w-4xl bg-neutral-100 p-2 shadow-md pb-1000",
+        className,
+      )}
+    >
+      {children}
+    </div>
+  );
 }
