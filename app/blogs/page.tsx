@@ -1,8 +1,8 @@
 import Container from "@/app/Components/container";
 import { Metadata } from "next";
 import Image from "next/image";
-import { GetBlogs } from "./utils/mdx";
-import Link from "next/link";
+import {  GetBlogs } from "./utils/mdx";
+import {Link} from "next-view-transitions";
 
 export const metadata: Metadata = {
   title: "All Blogs - Sayandip",
@@ -23,7 +23,7 @@ export default async function BlogPage() {
       <div className="h-160 ">
         {allBlogs.map((itm) => (
           <Link href={`blogs/${itm.slug}`}
-            className="flex  justify-between  rounded-2xl no-underline hover:shadow-2xs"
+            className="flex  justify-between no-underline hover:shadow-2xs"
             key={itm.title}
           >
             <div className="">

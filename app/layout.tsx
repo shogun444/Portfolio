@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Components/navbar/navbar";
+import { ViewTransitions } from "next-view-transitions";
+
 
 
 const inter = Inter({
@@ -19,12 +21,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
+  return ( 
     <html lang="en">
+     
       <body className={`${inter.className} antialiased bg-neutral-50 dark:bg-neutral-200`}>
         <Navbar/>
+        <ViewTransitions>
         {children}
+        </ViewTransitions>
       </body>
     </html>
+
   );
 }

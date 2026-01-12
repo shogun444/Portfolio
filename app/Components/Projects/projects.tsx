@@ -40,7 +40,7 @@ export default function Projects() {
       <h1 className="text-primary mt-5 w-full text-2xl font-semibold md:text-2xl">
         Projects
       </h1>
-      <p className="text-secondary md:text-md mt-2 max-w-2xl text-sm tracking-tight">
+      <p className="text-secondary md:text-md mt-2 max-w-2xl text-sm ">
         I love building web apps here are some of my projects.
       </p>
       <div className="mx-auto grid h-150 w-full grid-cols-2 gap-5 py-5">

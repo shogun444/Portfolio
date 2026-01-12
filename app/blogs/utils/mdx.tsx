@@ -1,6 +1,7 @@
 import { promises as fs } from "fs";
 import { compileMDX } from "next-mdx-remote/rsc";
 import path from "path";
+
 export default async function singleBlog(slug: string) {
   try {
     const blogs = await fs.readFile(
@@ -31,7 +32,7 @@ export const GetBlogs = async () => {
   return allblogs;
 };
 
-async function GetFrontMatter(slug: string) {
+export async function GetFrontMatter(slug: string) {
   const singleBlog = await fs.readFile(
     path.join(process.cwd(), "data", `${slug}.mdx`),
     "utf-8",

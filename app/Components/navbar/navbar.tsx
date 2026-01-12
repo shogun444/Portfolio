@@ -16,7 +16,7 @@ export default function Navbar() {
   const nav = [
     {
       name: "About",
-      href: "/",
+      href: "/about",
       id: 1,
     },
     {
@@ -61,16 +61,18 @@ export default function Navbar() {
           width: size ? "50rem" : "56rem",
           filter : "blur(0px)"
         }}
-        className={`fixed top-3 left-1/2 p-px flex -translate-x-1/2 items-center justify-between rounded-xl px-2 bg-neutral-100`}
+        className={`fixed top-3 left-1/2 p-px flex -translate-x-1/2 z-10 items-center justify-between rounded-xl px-2 bg-neutral-100`}
         ref={ref}
       >
+        <Link href={'/'}> 
         <Image
-          className="h-12 w-12 rounded-full object-cover"
+          className="h-10 w-10 rounded-full object-cover"
           src={"/profile.png"}
           width={120}
           height={120}
           alt="profile"
-        ></Image>
+         
+        ></Image> </Link>
         <motion.nav className="flex items-center gap-1 z-1">
           {nav.map((itm) => (
             <div
