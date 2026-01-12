@@ -13,7 +13,7 @@ export default function Container({
  
     <div
       className={cn(
-        "mx-auto w-full max-w-4xl bg-neutral-100 p-2 shadow-md pb-1000",
+        "mx-auto w-full max-w-4xl bg-neutral-100 p-2 shadow-md pb-300",
         className,
       )}
     >

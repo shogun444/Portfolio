@@ -14,11 +14,7 @@ import { useRef, useState } from "react";
 export default function Navbar() {
   const ref = useRef(null);
   const nav = [
-    {
-      name: "About",
-      href: "/About",
-      id: 1,
-    },
+    
     {
       name: "Projects",
       href: "#projects",
