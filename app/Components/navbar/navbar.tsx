@@ -16,7 +16,7 @@ export default function Navbar() {
   const nav = [
     {
       name: "About",
-      href: "/about",
+      href: "/About",
       id: 1,
     },
     {
@@ -38,6 +38,9 @@ export default function Navbar() {
   const [hover, setHover] = useState<number | null>(null);
   const [size, setSize] = useState<boolean>(false);
   const { scrollYProgress } = useScroll();
+  
+  const y = useTransform(scrollYProgress,[0,0.3],[0,10])
+  const shrink = useTransform(scrollYProgress,[0,0.3],["55%","53%"])
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     console.log(latest);
     if (latest > 0) {
@@ -47,6 +50,11 @@ export default function Navbar() {
   return (
     
       <motion.div
+      style={{
+        boxShadow : size? "var(--shadow-nav)" : "none",
+        width : shrink,
+        y
+      }}
         initial={{
           filter:"blur(1px)",
           width: "56rem"
@@ -57,9 +65,8 @@ export default function Navbar() {
         }}
         animate={{
           opacity: 1,
-          boxShadow: size ? "var(--shadow-nav)" : "none",
-          width: size ? "50rem" : "56rem",
-          filter : "blur(0px)"
+          filter : "blur(0px)",
+         
         }}
         className={`fixed top-3 left-1/2 p-px flex -translate-x-1/2 z-10 items-center justify-between rounded-xl px-2 bg-neutral-100`}
         ref={ref}
