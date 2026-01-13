@@ -63,21 +63,25 @@ export default function Projects() {
         Projects
       </h1>
       
-      <div className="mx-auto flex w-full gap-5 py-5">
+      <motion.div
+      initial={{
+            y:10
+          }}
+          animate={{
+            y:0
+          }}
+      className="mx-auto flex w-full gap-5 py-5">
         {Projects.map((itm) => (
           <motion.div
+          
             className="group mx-auto rounded-xl py-2 transition duration-200 hover:scale-[1.01] hover:shadow-sm"
             initial={{
               opacity: 0,
               filter: "blur(10px)",
-              y: 10,
             }}
             animate={{
               opacity: 1,
-              y: 0,
-            }}
-            whileInView={{
-              filter: "blur(0px)",
+               filter: "blur(0px)",
             }}
             transition={{
               delay: itm.id * 0.06,
@@ -86,9 +90,14 @@ export default function Projects() {
             key={itm.id}
           >
             <Link href={itm.link}>
-              <div className="p-2">
+              <div className="p-2 ">
+                
+                <div className="flex gap-1 justify-end"><h1  className="h-2 w-2    rounded-full bg-[#FF605C]"></h1>
+                <h1  className="h-2 w-2    rounded-full bg-[#FFBD44]"></h1>
+                <h1  className="h-2 w-2     rounded-full bg-[#00CA4E]"></h1></div>
+                
                 <Image
-                  className="relative h-50 w-100 rounded-2xl rounded-t-xl transition duration-200"
+                  className="relative h-50 w-100 pt-1 rounded-b-lg  transition duration-200"
                   src={itm.thumbnail}
                   width={200}
                   height={400}
@@ -106,19 +115,20 @@ export default function Projects() {
               </motion.div>
               <div className="flex items-center transition-all duration-300 group-hover:mx-2">
                 {itm.Tools.map((itm) => (
-                  <motion.div
-                  initial={{
-                    width:27
-                  }}
-                    whileHover={{
-                      width : 96
+                  <motion.div 
+                  initial="rest"
+                    whileHover="visible"
+                    variants={{
+                      rest : {width : 27},
+                      visible : {width : 96}
                     }}
                     transition={{
-                      duration: 0.3,
+                       
+                      duration: 0.001,
                       ease: easeInOut,
                     }}
                     key={itm.name}
-                    className="group/item flex items-center rounded-full bg-neutral-200 "
+                    className="group/item transition-all duration-500 flex items-center rounded-full bg-neutral-200 overflow-hidden"
                   >
                     <Image
                       className="h-6 w-6 rounded-full p-1"
@@ -128,17 +138,13 @@ export default function Projects() {
                       height={1}
                     ></Image>{" "}
                     <motion.h1
-                      initial={{
-                        opacity:0
-                      }}
-                      animate={{
-                        opacity:1
-                      }}
+                     
                       transition={{
+                       
                         ease: easeInOut,
                         duration: 0.3,
                       }}
-                      className="hidden group-hover/item:flex text-[11px] text-neutral-600 whitespace-nowrap "
+                      className="text-neutral-200 group-hover/item:text-neutral-500  group-hover/item:flex  transition-all duration-75 text-[11px]  whitespace-nowrap "
                     >
                       {itm.name}
                     </motion.h1>
@@ -148,7 +154,7 @@ export default function Projects() {
             </Link>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }

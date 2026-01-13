@@ -3,20 +3,17 @@ import Container from "./Components/container";
 import Navbar from "./Components/navbar/navbar";
 import Projects from "./Components/Projects/projects";
 import LandingBlogs from "./Components/LandingBlogs/landing-blogs";
+import AnimatedText from "./Components/Animations/AnimatedText";
 
 export default function Home() {
   return (
     <div className="flex h-screen w-full bg-neutral-200">
-      <Container className="px-7">
-        <h1 className="text-primary w-full pt-21 text-2xl font-bold md:text-4xl">
-          Sayandip Roy
-        </h1>
+      <Container className="px-7 pt-21">
+       <AnimatedText text=" Hello there I am a Software Engineer with passion for building
+          scalable apps and efficient system." heading="Sayandip Roy"></AnimatedText>
 
-        <p className="text-secondary text-md text-md mt-2 w-2xl tracking-tight">
-          Hello there I am a Software Engineer with passion for building
-          scalable apps and efficient system.
-        </p>
-        <div className="shadow-2xs">
+       
+        <div className="shadow-2xs ">
           <Projects />
         </div>
         <div className="shadow-2xs">
