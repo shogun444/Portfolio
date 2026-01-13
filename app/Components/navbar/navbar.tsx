@@ -17,12 +17,12 @@ export default function Navbar() {
     
     {
       name: "Projects",
-      href: "#projects",
+      href: "/projects",
       id: 2,
     },
     {
       name: "Contact",
-      href: "#contact",
+      href: "/contact",
       id: 3,
     },
     {
@@ -91,7 +91,7 @@ export default function Navbar() {
                     ease: "easeInOut",
                   }}
                   layoutId="follow"
-                  className="absolute inset-0 rounded-2xl bg-neutral-200"
+                  className="absolute inset-0 rounded-md bg-neutral-200"
                 />
               )}
 

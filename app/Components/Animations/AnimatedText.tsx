@@ -8,8 +8,8 @@ interface animationtype{
 export default function AnimatedText({heading,text}:animationtype){
   
  
-  return(<div >
-  <motion.h1  className="text-primary w-full text-2xl font-bold md:text-4xl " 
+  return(<div className="shadow-2xs pb-5">
+  <motion.h1  className="text-primary  w-full text-2xl font-bold md:text-4xl " 
   initial={{
     opacity:0,
     filter:"blur(10px)",
@@ -41,7 +41,7 @@ export default function AnimatedText({heading,text}:animationtype){
   transition={{
     delay:0.2
   }}
-  className="text-secondary text-md text-md mt-4 w-lg tracking-tight">
+  className="text-secondary  text-md  mt-4 w-lg tracking-tight ">
 
     {text}</motion.p>
   </div>)

@@ -19,9 +19,7 @@ export default function RootLayout({
 }>) {
   return (
      <ViewTransitions>
-    <Container className="prose py-20 px-7 ">
-      {children}
-    </Container>
+  {children}
     </ViewTransitions>
   );
 }

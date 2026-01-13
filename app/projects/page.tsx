@@ -1,10 +1,10 @@
-"use client";
-
+"use client"
 import Image from "next/image";
+import Container from "../Components/container";
+import AnimatedText from "../Components/Animations/AnimatedText";
+import {motion} from "motion/react"
 import Link from "next/link";
-import Container from "../container";
-import { easeInOut, hover, motion } from "motion/react";
-import { useState } from "react";
+
 export default function Projects() {
   const Projects = [
     {
@@ -54,16 +54,13 @@ export default function Projects() {
       link: "https://resume-builder-ai-one.vercel.app/",
     },
   ];
-
-  const [size, setSize] = useState(false);
-
   return (
-    <div >
-      <h1 className="text-neutral-600 shadow-sm rounded-md mt-5 w-fit p-2 text-md font-medium md:text-md">
-        Projects
-      </h1>
-      
-      <motion.div
+   
+      <Container className="px-7 pt-21">
+        <AnimatedText text="I'm a passionate software engineer dedicated to crafting elegant solutions for complex problems. With expertise in full-stack development, I enjoy building user-centric applications that make a difference." heading="Projects"></AnimatedText>
+       
+
+       <motion.div
       initial={{
             y:10
           }}
@@ -125,7 +122,7 @@ export default function Projects() {
                     transition={{
                        
                       duration: 0.001,
-                      ease: easeInOut,
+                      ease: 'easeInOut',
                     }}
                     key={itm.name}
                     className="group/item transition-all duration-500 flex items-center rounded-full bg-neutral-200 overflow-hidden"
@@ -141,7 +138,7 @@ export default function Projects() {
                      
                       transition={{
                        
-                        ease: easeInOut,
+                        ease: 'easeInOut',
                         duration: 0.3,
                       }}
                       className="text-neutral-200 group-hover/item:text-neutral-500  group-hover/item:flex  transition-all duration-75 text-[11px]  whitespace-nowrap "
@@ -155,6 +152,7 @@ export default function Projects() {
           </motion.div>
         ))}
       </motion.div>
-    </div>
+      </Container>
+   
   );
 }

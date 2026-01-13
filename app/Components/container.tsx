@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-
+import Footer from "./Footer";
 
 export default function Container({
   children,
@@ -10,15 +10,13 @@ export default function Container({
   className?: string;
 }) {
   return (
- 
     <div
       className={cn(
-        "mx-auto w-full max-w-4xl bg-neutral-100 p-2 shadow-md pb-300",
+        "mx-auto min-h-screen w-full max-w-4xl bg-neutral-100 p-2 shadow-md",
         className,
       )}
     >
-      {children}
+      <div className="flex-col justify-end">{children}</div>
     </div>
-
   );
 }
